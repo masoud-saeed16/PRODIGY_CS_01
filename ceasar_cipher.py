@@ -5,14 +5,18 @@ def caesar_cipher(text, shift, mode):
     result = ""
     for char in text:
         if char.isalpha():
+
             if char.islower():
                 alphabet = 'abcdefghijklmnopqrstuvwxyz'
             else:
                 alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
             shifted_idx = (alphabet.index(char) + shift) % 26
+
             if mode == 'decrypt':
                 shifted_idx = (alphabet.index(char) - shift) % 26
             result += alphabet[shifted_idx]
+
         else:
             result += char
     return result
@@ -25,10 +29,12 @@ def encrypt_decrypt():
     if mode == 'Encrypt':
         result = caesar_cipher(text, shift, 'encrypt')
         result_label.config(text=f"Encrypted message: {result}")
+
     else:
         result = caesar_cipher(text, shift, 'decrypt')
         result_label.config(text=f"Decrypted message: {result}")
 
+# creating tkinter window
 root = tk.Tk()
 root.title("Caesar Cipher")
 root.geometry("400x300")
